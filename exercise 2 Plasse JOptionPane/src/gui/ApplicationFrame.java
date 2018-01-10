@@ -39,4 +39,8 @@ public class ApplicationFrame extends JFrame {
 		centerpane.paste();		
 	}
 		
+	public void exit() {
+		if(JOptionPane.showConfirmDialog(null, "Lukke?")==JOptionPane.OK_OPTION)
+			System.exit(0);	
+	}
 }

@@ -11,7 +11,7 @@ public class Controller {
 	}
 
 	public static void stop() {
-		System.exit(0);		
+		ui.exit();	
 	}
 
 	public static void open() {	
