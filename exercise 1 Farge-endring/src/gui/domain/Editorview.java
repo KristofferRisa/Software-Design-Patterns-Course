@@ -1,7 +1,6 @@
 package gui.domain;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -9,11 +8,10 @@ import java.io.FileOutputStream;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
 public class Editorview extends JPanel {
 		
-	JTextArea text = new JTextArea();
+	Texteditor text = new Texteditor();
 	File file = new File (".");
 	JFileChooser jf = new JFileChooser(file);
 	
