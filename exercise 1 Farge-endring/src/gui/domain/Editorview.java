@@ -1,23 +1,36 @@
 package gui.domain;
 
-import java.awt.BorderLayout;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-
-import javax.swing.JFileChooser;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import java.awt.*;
+import java.io.*;
+import javax.swing.*;
+import javax.swing.event.*;
 
 public class Editorview extends JPanel {
 		
-	Texteditor text = new Texteditor();
+	JTextArea text = new JTextArea();
 	File file = new File (".");
 	JFileChooser jf = new JFileChooser(file);
 	
 	public Editorview() {
 		setLayout(new BorderLayout());
 		add(new JScrollPane(text));
+		text.getDocument().addDocumentListener(new DocumentListener() {
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				updateBackground();
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				updateBackground();
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				//Plain text components do not fire these events (https://docs.oracle.com/javase/tutorial/uiswing/events/documentlistener.html)
+			}
+		});
+		
 	}
 	
 	public void save() {
@@ -62,6 +75,13 @@ public class Editorview extends JPanel {
 
 	public void paste() {		
 		text.paste();		
+	}
+	
+	private void updateBackground() {
+		if(text.getDocument().getLength() > 0)
+			text.setBackground(new Color(240,240,140)); 
+		else
+			text.setBackground(new Color(255,255,255));
 	}
 	
 }
