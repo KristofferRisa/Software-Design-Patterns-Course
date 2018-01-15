@@ -24,7 +24,7 @@ public class Mainmenu extends JMenuBar implements ActionListener {
 	JMenuItem exit = new JMenuItem("exit");
 	JMenuItem paste = new JMenuItem("paste");
 	JMenuItem test = new JMenuItem("test");
-	JCheckBoxMenuItem toggleHtmlView = new JCheckBoxMenuItem("Vis HTML",true);
+	JCheckBoxMenuItem toggleAutoForHtmlRendering = new JCheckBoxMenuItem("Vis HTML",true);
 	
 	public Mainmenu() {
 		// list of verticals
@@ -47,7 +47,7 @@ public class Mainmenu extends JMenuBar implements ActionListener {
 
 		// tools
 		tools.add(test).addActionListener(this);
-		tools.add(toggleHtmlView).addActionListener(this);
+		tools.add(toggleAutoForHtmlRendering).addActionListener(this);
 
 		// windows
 
@@ -74,12 +74,12 @@ public class Mainmenu extends JMenuBar implements ActionListener {
 			Controller.paste();
 		if (arg.getSource() == test)
 			Controller.testhtml();
-		if(arg.getSource() == toggleHtmlView)
+		if(arg.getSource() == toggleAutoForHtmlRendering)
 			toggleHtmlView();
 	}
 
 	private void toggleHtmlView() {
-		Controller.toggleHtmlView(toggleHtmlView.isSelected());
+		Controller.toggleHtmlView(toggleAutoForHtmlRendering.isSelected());
 	}
 
 }
