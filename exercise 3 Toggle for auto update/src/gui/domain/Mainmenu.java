@@ -9,6 +9,7 @@ package gui.domain;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -23,9 +24,9 @@ public class Mainmenu extends JMenuBar implements ActionListener {
 	JMenuItem exit = new JMenuItem("exit");
 	JMenuItem paste = new JMenuItem("paste");
 	JMenuItem test = new JMenuItem("test");
-
+	JCheckBoxMenuItem toggleHtmlView = new JCheckBoxMenuItem("Vis HTML",true);
+	
 	public Mainmenu() {
-
 		// list of verticals
 		JMenu file = new JMenu("file");
 		JMenu edit = new JMenu("edit");
@@ -38,6 +39,7 @@ public class Mainmenu extends JMenuBar implements ActionListener {
 		file.add(open).addActionListener(this);
 		file.add(save).addActionListener(this);
 		file.add(exit).addActionListener(this);
+		
 
 		// edit
 		edit.add(paste).addActionListener(this);
@@ -45,6 +47,7 @@ public class Mainmenu extends JMenuBar implements ActionListener {
 
 		// tools
 		tools.add(test).addActionListener(this);
+		tools.add(toggleHtmlView).addActionListener(this);
 
 		// windows
 
@@ -56,6 +59,8 @@ public class Mainmenu extends JMenuBar implements ActionListener {
 		add(search);
 		add(windows);
 		add(help);
+		
+		toggleHtmlView();
 	}
 
 	public void actionPerformed(ActionEvent arg) {
@@ -69,6 +74,12 @@ public class Mainmenu extends JMenuBar implements ActionListener {
 			Controller.paste();
 		if (arg.getSource() == test)
 			Controller.testhtml();
+		if(arg.getSource() == toggleHtmlView)
+			toggleHtmlView();
+	}
+
+	private void toggleHtmlView() {
+		Controller.toggleHtmlView(toggleHtmlView.isSelected());
 	}
 
 }

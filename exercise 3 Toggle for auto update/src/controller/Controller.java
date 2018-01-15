@@ -30,4 +30,8 @@ public class Controller {
 		maingui.testhtml();		
 	}
 
+	public static void toggleHtmlView(boolean toggle) {
+		maingui.toggleHtmlView(toggle);
+	}
+
 }

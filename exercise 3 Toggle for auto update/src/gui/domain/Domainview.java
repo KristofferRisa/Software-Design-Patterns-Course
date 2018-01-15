@@ -38,4 +38,9 @@ public class Domainview extends JPanel {
 		htmlview.setText(editorview.getText());		
 	}
 
+	public void toggleHtmlView(boolean toggle) {
+		split.setRightComponent(toggle ? htmlview : null);
+		setDividers();
+	}
+
 }
