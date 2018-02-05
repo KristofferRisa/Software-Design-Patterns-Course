@@ -15,7 +15,7 @@ import javax.imageio.ImageIO;
 public class Background extends MoveableComponent {
 
 	Image image;
-	String imgname = "http://www.wga.hu/art/c/cole/empire.jpg";
+	String imgname = "https://www.wga.hu/art/c/cole/empire.jpg";
 	
 	public Background() {
 		try {
