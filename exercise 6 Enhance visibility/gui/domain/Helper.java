@@ -1,7 +1,10 @@
 package gui.domain;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 import controller.Controller;
@@ -35,6 +38,11 @@ public class Helper {
 	public void paint(Graphics g) {
 		if (shape.equals(SHAPES[0])) {
 			g.fillRect(0, 0, glass.getWidth(), glass.getHeight());
+			//adds a red borderline 
+			Graphics2D g2d = (Graphics2D) g;
+			g2d.setStroke(new BasicStroke(5));
+			g2d.setColor(Color.RED);
+			g2d.drawRect(0, 0, glass.getWidth(), glass.getHeight());
 		} else if (shape.equals(SHAPES[1])) {
 			g.fillOval(0, 0, glass.getWidth(), glass.getHeight());
 		}
