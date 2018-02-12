@@ -1,6 +1,7 @@
 package gui.domain;
 
 import java.awt.Dimension;
+import java.awt.Image;
 
 import javax.swing.JPanel;
 
@@ -9,14 +10,17 @@ public class Domainview extends JPanel {
 	Background background = new Background();
 	MoveableGlass glassbehind = new MoveableGlass();
 	MoveableGlass glassinfront = new MoveableGlass();
-	OpticalZoom opticalZoom = new OpticalZoom();
+	OpticalZoom opticalZoom;
 
 	public Domainview() {
+		
+		opticalZoom = new OpticalZoom(background.getImage());
 		setLayout(null);
+		add(opticalZoom);
 		//add(glassinfront);
 		add(background);
 		//add(glassbehind);
-		add(opticalZoom);
+		
 	}
 
 	public void selectGlassColor() {
@@ -29,6 +33,10 @@ public class Domainview extends JPanel {
 
 	public Dimension getTheSize() {
 		return background.getSize();
+	}
+
+	public OpticalZoom getOpticalZoom() {
+		return opticalZoom;
 	}
 
 }

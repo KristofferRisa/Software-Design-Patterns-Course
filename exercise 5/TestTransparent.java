@@ -1,4 +1,4 @@
-import gui.ApplicationFrame;
+import gui.*;
 
 /*
  * Created on 06.mar.2005

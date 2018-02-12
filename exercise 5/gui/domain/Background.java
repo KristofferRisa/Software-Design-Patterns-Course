@@ -31,5 +31,9 @@ public class Background extends MoveableComponent {
 			g.drawImage(image, 0, 0, null);
 		}
 	}
+	
+	public Image getImage() {
+		return this.image;
+	}
 
 }

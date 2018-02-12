@@ -15,12 +15,15 @@ public class ApplicationFrame extends JFrame implements ISupercontroller {
 
 	public ApplicationFrame() {
 		Controller.init(this);
-		setTitle("Bevegelse med composite alpha på bitmap");
+		setTitle("Bevegelse med composite alpha pï¿½ bitmap");
 		setLayout(new BorderLayout());
+		
 		add(centerpane = new Centerpane(), BorderLayout.CENTER);
 		add(southpane = new Southpane(), BorderLayout.SOUTH);
+		
 		setJMenuBar(new MenuController());
 		setSize(centerpane.getTheSize());
+		new ZoomControllerFrame(centerpane.getOpticalZoom());
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
