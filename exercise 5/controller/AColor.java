@@ -7,19 +7,16 @@
 package controller;
 
 import java.awt.event.ActionEvent;
-
 import javax.swing.Action;
-
 import easylib.controller.SuperAction;
 import easylib.controller.Usecase;
-
 
 class AColor extends SuperAction {
 
 	AColor(Usecase usecase) {
 		super(usecase);
 		putValue(Action.SHORT_DESCRIPTION, "Velg farge");
-		putValue(Action.LONG_DESCRIPTION, "Velg farge på glasset");
+		putValue(Action.LONG_DESCRIPTION, "Velg farge pï¿½ glasset");
 	}
 
 	public void actionPerformed(ActionEvent e) {

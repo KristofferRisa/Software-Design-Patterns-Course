@@ -1,16 +1,49 @@
 package controller;
 
-import easylib.controller.ISupercontroller;
-import easylib.controller.Supercontroller;
+import java.awt.BorderLayout;
+import java.util.Observer;
 
-public class ZoomController extends Supercontroller implements IActionlist {
+import javax.swing.JFrame;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import gui.MenuController;
+import gui.domain.WindowObservable;
 
-	public ZoomController() {
-		
-	}
+public class ZoomController extends JFrame implements IActionlist {
 	
-	public static void init(ISupercontroller frame) {
-		superinit(frame);
+	private WindowObservable observable;
+	
+	public ZoomController(ObserverManager manager){
+		
+		setTitle("Control your Zoom");
+		setLayout(new BorderLayout());
+		setJMenuBar(new MenuController());
+		
+		observable =  new WindowObservable();
+		for(Observer o : manager.GetObserver())
+			observable.addObserver(o);
+
+		JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 5, 0);
+	    //slider.setMinorTickSpacing(1);
+	    slider.setMajorTickSpacing(1);
+	    slider.setPaintTicks(true);
+	    slider.setPaintLabels(true);
+	    
+		add(slider);
+		
+		slider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+            		System.out.println("Zoom level: " + slider.getValue());
+                observable.setValue(slider.getValue());
+            }
+		});
+		setSize(200,150);
+		setLocationRelativeTo(null);
+		setVisible(true);
 	}
 
+
+	
 }

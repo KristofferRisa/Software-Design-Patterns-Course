@@ -1,3 +1,5 @@
+import controller.ObserverManager;
+import controller.ZoomController;
 import gui.*;
 
 /*
@@ -17,5 +19,6 @@ public class TestTransparent {
 
 	public static void main(String[] args) {
 		new ApplicationFrame();
+		new ZoomController(ObserverManager.getInstance());
 	}
 }

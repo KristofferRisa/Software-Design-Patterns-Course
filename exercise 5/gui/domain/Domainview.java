@@ -5,6 +5,8 @@ import java.awt.Image;
 
 import javax.swing.JPanel;
 
+import controller.ObserverManager;
+
 public class Domainview extends JPanel {
 
 	Background background = new Background();
@@ -15,6 +17,8 @@ public class Domainview extends JPanel {
 	public Domainview() {
 		
 		opticalZoom = new OpticalZoom(background.getImage());
+		ObserverManager manager = ObserverManager.getInstance();
+		manager.AddObserver(opticalZoom);
 		setLayout(null);
 		add(opticalZoom);
 		//add(glassinfront);

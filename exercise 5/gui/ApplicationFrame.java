@@ -23,7 +23,6 @@ public class ApplicationFrame extends JFrame implements ISupercontroller {
 		
 		setJMenuBar(new MenuController());
 		setSize(centerpane.getTheSize());
-		new ZoomControllerFrame(centerpane.getOpticalZoom());
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
