@@ -8,75 +8,73 @@ import java.util.Observer;
 
 import javax.swing.JComponent;
 
-public class OpticalZoom extends JComponent implements MouseMotionListener,Observer {
+public class OpticalZoom extends MoveableComponent implements Observer {
 	
 	Rectangle rectangle;
 	private Image img;
-	private int HEIGHT = 100;
-	private int WIDTH = 100; 
-	private int zoomLevel = 5;	
-	Point offset;
-
-	{
-		addMouseMotionListener(this);
-	}
+	private int HEIGHT = 200;
+	private int WIDTH = 200; 
+	private double zoomLevel = 100;	
 	
 	public OpticalZoom(Image i) {
 		rectangle = new Rectangle(HEIGHT,WIDTH);
 		setSize(HEIGHT,WIDTH);
+		setLocation(0,0);
 		img = i;
 	}
 	
 	public void paint(Graphics g) {
 		
-		int destx2 = rectangle.x  + HEIGHT;
-		int desty2 = rectangle.y + WIDTH;
-		System.out.println("destx2 =" + destx2 + ". desty2 = " + desty2);
+		double newHeight = img.getHeight(null) * zoomLevel / 100;
+	    double newWidth = img.getWidth(null) * zoomLevel /100;
 		
-		int offsetZoom =((WIDTH+HEIGHT)/4/2);
-		System.out.println("zoom = " + offsetZoom);
-		
+	    int diffHeight = (int)(img.getHeight(null) - newHeight);
+	    int diffWidth = (int)(img.getWidth(null) - newWidth);
+	    
+	    System.out.println("org h = " + img.getHeight(null) + ". org w = " + img.getWidth(null));
+	    System.out.println("Ny H = " + newHeight + ". Ny W = " + newWidth);
+	    System.out.println("Diff høyde = " + diffHeight + " diff bredde = " + diffWidth + "\n");
+	   
+	    double centerOrgX = getX() + (WIDTH / 2) ;
+	    double centerOrgY = getY() +  (HEIGHT / 2);
+	    
+	    System.out.println("CEnter org X = " + centerOrgX + ". Center org Y = " + centerOrgY);
+	    
+	    double zoomRatio =  zoomLevel / 100;
+	    
+	    double centerNyX = centerOrgX * zoomRatio; // zoomLevel / 100;
+	    double centerNyY = centerOrgY * zoomRatio; // zoomLevel / 100;
+	    
+	    double diffCenterX = (centerOrgX - centerNyX);
+	    double diffCenterY = (centerOrgY - centerNyY);
+	    
+	    // Test start postion
+	    System.out.println("Diff X = " + diffCenterX + "\n Diff Y = " + diffCenterY + "\n");
+	    
+	    int startX = (int) (centerOrgX - (WIDTH/2) - (diffWidth/2));
+	    int startY = (int)(centerOrgY - (HEIGHT /2) - (diffHeight/2));
+	 
+	    int endX = (int) (centerOrgX + (WIDTH/2) + (diffWidth/2));
+	    int endY = (int)(centerOrgY + (HEIGHT /2) + (diffHeight/2));
+	    
 		g.drawImage(img
 				, 0, 0
-				,HEIGHT+(zoomLevel * 10),WIDTH+(zoomLevel * 10)
-				,rectangle.x+offsetZoom ,rectangle.y+offsetZoom
-				, destx2,desty2
+				, HEIGHT,WIDTH 
+				
+				, startX , startY
+				, endX, endY	
+				
 				, null);
-	}
-	
-
-	
-	public void updateRectangle(Point source) {
-			
-//		System.out.println("Source x = " + source.x);
-//		System.out.println("Source y = " + source.y);
-//		System.out.println("This location x = " + getLocation().x);
-//		System.out.println("This location y = " + getLocation().y);
-//		
-		rectangle.x = source.x;//getLocation().x; //+ HEIGHT/2;
-		rectangle.y = source.y; //getLocation().y; //+ WIDTH/2;
-		System.out.println("Rectangle = " + rectangle);
+		    
+		g.setColor(Color.GREEN);
+		g.drawRect(0, 0, getWidth(), getHeight());
 		
 	}
 	
-	public void mouseDragged(MouseEvent source) {
-		System.out.println("Mouse point: " + source.getPoint());
-		Point p = source.getPoint();
-		Point l = getLocation();
-		l.x += p.x - offset.x;
-		l.y += p.y - offset.y;
-		updateRectangle(getLocation());
-		
-		setLocation(l);
-	}
-
-	public void mouseMoved(MouseEvent source) {
-		offset = source.getPoint();
-	}
-
 	@Override
 	public void update(Observable o, Object arg) {
 		zoomLevel = (int)arg;
+		System.out.println("zoom level = " + + (int)arg);
 		repaint();
 	}
 

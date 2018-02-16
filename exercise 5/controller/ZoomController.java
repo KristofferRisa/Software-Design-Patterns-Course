@@ -22,9 +22,9 @@ public class ZoomController extends JFrame implements IActionlist {
 		observable =  new WindowObservable();
 		observable.addObserver(o);
 
-		JSlider slider = new JSlider(JSlider.HORIZONTAL, 100, 400, 100);
+		JSlider slider = new JSlider(JSlider.HORIZONTAL,1, 10, 1);
 	    //slider.setMinorTickSpacing(1);
-	    slider.setMajorTickSpacing(100);
+	    slider.setMajorTickSpacing(1);
 	    slider.setPaintTicks(true);
 	    slider.setPaintLabels(true);
 	    
@@ -34,7 +34,7 @@ public class ZoomController extends JFrame implements IActionlist {
             @Override
             public void stateChanged(ChangeEvent e) {
             		System.out.println("Zoom level: " + slider.getValue());
-                observable.setValue(slider.getValue());
+                observable.setValue(slider.getValue() + 100); // Denne må jeg eventuelt fiks litt på
             }
 		});
 		setSize(200,150);
