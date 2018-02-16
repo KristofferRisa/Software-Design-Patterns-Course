@@ -21,8 +21,9 @@ public class ZoomController extends JFrame  {
 		observable =  new WindowObservable();
 		observable.addObserver(o);
 
-		JSlider slider = new JSlider(JSlider.VERTICAL,1, 10, 1);
-	    slider.setMajorTickSpacing(1);
+		JSlider slider = new JSlider(JSlider.VERTICAL,100, 400, 100);
+	    
+		slider.setMajorTickSpacing(100);
 	    slider.setPaintTicks(true);
 	    slider.setPaintLabels(true);
 	    
@@ -31,7 +32,6 @@ public class ZoomController extends JFrame  {
 		slider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-            		System.out.println("Zoom level: " + slider.getValue());
                 observable.setValue(slider.getValue());
             }
 		});
