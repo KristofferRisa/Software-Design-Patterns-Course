@@ -7,17 +7,18 @@ public class OpticalZoom extends MoveableComponent implements Observer {
 	
 	private static final long serialVersionUID = 1110;
 	private Image img;
-	private double scale = 100;
 	private int WIDTH = 100;
 	private int HEIGHT = 100;
-	private double oldHeight;
-	private double oldWidth;
+	private double scale = 100;
 	private double halfWidth = WIDTH/2;
 	private double halfHeight = HEIGHT/2;
+	
 	private int startX;
 	private int startY;
 	private int endX;
 	private int endY;
+	private double oldHeight;
+	private double oldWidth;
 	
 	public OpticalZoom(Image i) {
 		setSize(HEIGHT,WIDTH);
@@ -45,12 +46,14 @@ public class OpticalZoom extends MoveableComponent implements Observer {
 		// Sets the input parameter to "100 %" and add the arg value as percent
 		// 1 = 101 % 
 		scale = (int)(arg) + 100;
+		
+		System.out.println("zoom level = " + + (int)arg);
 		repaint();
 	}
 
 	private void updatePostion() {
 		if(scale > 100) {
-			//Calculate new height and width based on scale or zoom
+			//Calculate new hegiht and width based on scale
 			double newHeight = img.getHeight(null) * scale / 100;
 		    double newWidth = img.getWidth(null) * scale /100;
 
@@ -59,7 +62,7 @@ public class OpticalZoom extends MoveableComponent implements Observer {
 		    {
 		    		 newHeight = img.getHeight(null) * scale / 100;
 		    		 oldHeight = newHeight;
-		    } else {
+		    }else {
 		    		newHeight = oldHeight;
 		    }
 		    
@@ -70,6 +73,7 @@ public class OpticalZoom extends MoveableComponent implements Observer {
 		    } else {
 		    		newWidth = oldWidth;	
 		    }
+		    
 		    
 		    //Calculate the difference between the original and scaled image
 		    int diffHeight = (int)((img.getHeight(null) - newHeight)/2);
@@ -84,7 +88,18 @@ public class OpticalZoom extends MoveableComponent implements Observer {
 		    startY = (int)(centerOrgY - halfHeight - diffHeight);
 		    
 		    endX = (int) (centerOrgX + halfWidth + diffWidth);
-		    endY = (int)(centerOrgY + halfHeight + diffHeight);		    
+		    endY = (int)(centerOrgY + halfHeight + diffHeight);
+		    
+		  	System.out.println();
+			System.out.println("Starting updating");
+			System.out.print("Org height and width: " + img.getHeight(null) + ", " + img.getWidth(null));
+		    System.out.println("New Height and Width : " + newHeight + "."+ newWidth);
+		    System.out.println("Diff Height and Width : " + diffHeight + "."+ diffWidth);
+		    System.out.println("Center org : " + centerOrgX + "."+ centerOrgY);
+		    System.out.println("Start cordinates: " + startX + "," + startY);
+		    System.out.println("Ends cordinates: " + endX + "," + endY);
+		    System.out.println("Done updating");
 		}
+		
 	}
 }
