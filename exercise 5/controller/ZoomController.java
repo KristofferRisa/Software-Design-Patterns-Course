@@ -9,21 +9,19 @@ import javax.swing.event.ChangeListener;
 import gui.MenuController;
 import gui.domain.WindowObservable;
 
-public class ZoomController extends JFrame implements IActionlist {
-	
+public class ZoomController extends JFrame  {
+	private static final long serialVersionUID = 1110;
 	private WindowObservable observable;
 	
 	public ZoomController(Observer o){
 		
 		setTitle("Control your Zoom");
 		setLayout(new BorderLayout());
-		setJMenuBar(new MenuController());
 		
 		observable =  new WindowObservable();
 		observable.addObserver(o);
 
-		JSlider slider = new JSlider(JSlider.HORIZONTAL,1, 10, 1);
-	    //slider.setMinorTickSpacing(1);
+		JSlider slider = new JSlider(JSlider.VERTICAL,1, 10, 1);
 	    slider.setMajorTickSpacing(1);
 	    slider.setPaintTicks(true);
 	    slider.setPaintLabels(true);
@@ -34,14 +32,12 @@ public class ZoomController extends JFrame implements IActionlist {
             @Override
             public void stateChanged(ChangeEvent e) {
             		System.out.println("Zoom level: " + slider.getValue());
-                observable.setValue(slider.getValue() + 100); // Denne må jeg eventuelt fiks litt på
+                observable.setValue(slider.getValue());
             }
 		});
-		setSize(200,150);
-		setLocationRelativeTo(null);
+		
+		setSize(100,250);
 		setVisible(true);
 	}
-
-
 	
 }
