@@ -2,7 +2,6 @@ package controller;
 
 import java.awt.BorderLayout;
 import java.util.Observer;
-
 import javax.swing.JFrame;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
@@ -14,19 +13,18 @@ public class ZoomController extends JFrame implements IActionlist {
 	
 	private WindowObservable observable;
 	
-	public ZoomController(ObserverManager manager){
+	public ZoomController(Observer o){
 		
 		setTitle("Control your Zoom");
 		setLayout(new BorderLayout());
 		setJMenuBar(new MenuController());
 		
 		observable =  new WindowObservable();
-		for(Observer o : manager.GetObserver())
-			observable.addObserver(o);
+		observable.addObserver(o);
 
-		JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 5, 0);
+		JSlider slider = new JSlider(JSlider.HORIZONTAL, 100, 400, 100);
 	    //slider.setMinorTickSpacing(1);
-	    slider.setMajorTickSpacing(1);
+	    slider.setMajorTickSpacing(100);
 	    slider.setPaintTicks(true);
 	    slider.setPaintLabels(true);
 	    

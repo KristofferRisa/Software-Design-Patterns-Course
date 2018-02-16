@@ -1,11 +1,8 @@
 package gui.domain;
 
 import java.awt.Dimension;
-import java.awt.Image;
-
 import javax.swing.JPanel;
-
-import controller.ObserverManager;
+import controller.ZoomController;
 
 public class Domainview extends JPanel {
 
@@ -13,12 +10,12 @@ public class Domainview extends JPanel {
 	MoveableGlass glassbehind = new MoveableGlass();
 	MoveableGlass glassinfront = new MoveableGlass();
 	OpticalZoom opticalZoom;
+	ZoomController zoomController;
 
 	public Domainview() {
 		
 		opticalZoom = new OpticalZoom(background.getImage());
-		ObserverManager manager = ObserverManager.getInstance();
-		manager.AddObserver(opticalZoom);
+		zoomController = new ZoomController(opticalZoom);
 		setLayout(null);
 		add(opticalZoom);
 		//add(glassinfront);
