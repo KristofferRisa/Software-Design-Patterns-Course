@@ -36,7 +36,7 @@ public class OpticalZoom extends MoveableComponent implements Observer {
 
 		// Marks the lens by drawing a colored rectangle around it
 		g.setColor(Color.GREEN);
-		g.drawRect(0, 0, getWidth(), getHeight());
+		g.drawRect(0, 0, WIDTH, HEIGHT);
 	}
 	
 	@Override
@@ -54,8 +54,7 @@ public class OpticalZoom extends MoveableComponent implements Observer {
 	    double halfHeight = ((HEIGHT / scale) /2);
 	    
 	    rectangle = new Rectangle((int)(getX() + newWidth), (int)(getY() + newHeight)
-    			, getWidth()
-    			, getHeight());
+    			, WIDTH , HEIGHT);
 	  
 	    System.out.println("Rectangle: " + rectangle);
 	    

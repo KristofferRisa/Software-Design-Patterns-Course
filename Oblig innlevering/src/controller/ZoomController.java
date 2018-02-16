@@ -22,19 +22,16 @@ public class ZoomController extends JFrame  {
 		observable.addObserver(o);
 
 		JSlider slider = new JSlider(JSlider.VERTICAL,100, 400, 100);
-	    
 		slider.setMajorTickSpacing(100);
-	    slider.setPaintTicks(true);
-	    slider.setPaintLabels(true);
-	    
-		add(slider);
-		
+		slider.setPaintTicks(true);
+		slider.setPaintLabels(true);
 		slider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 observable.setValue(slider.getValue());
             }
 		});
+		add(slider);
 		
 		setSize(100,250);
 		setVisible(true);
