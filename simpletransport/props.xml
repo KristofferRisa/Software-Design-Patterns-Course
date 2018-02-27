@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="hostname">oo.hive.no</entry>
+<entry key="clienthome">c:/test/files</entry>
+<entry key="hosthome">/home/vh/transport</entry>
+<entry key="pscphome">c:/test</entry>
+<entry key="username">anonym</entry>
+</properties>

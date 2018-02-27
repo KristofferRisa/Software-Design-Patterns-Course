@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="hostname">files.minide.de</entry>
+<entry key="clienthome">c:\temp</entry>
+<entry key="hosthome">transport</entry>
+<entry key="pscphome">c:\tools</entry>
+<entry key="username">anon</entry>
+</properties>
