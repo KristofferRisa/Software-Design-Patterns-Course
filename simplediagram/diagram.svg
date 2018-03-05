@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+                     "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+    <title>DIAGRAM Brukstilfeller og aktører</title>
+    <g id="Actor_1">
+        <g id="line_1">
+            <line style="fill:none; stroke:black; stroke-width:1;"
+                x1="125.0" x2="110.0" y1="61.0" y2="75.0"/>
+        </g>
+        <g id="line_2">
+            <line style="fill:none; stroke:black; stroke-width:1;"
+                x1="125.0" x2="140.0" y1="61.0" y2="75.0"/>
+        </g>
+        <g id="line_3">
+            <line style="fill:none; stroke:black; stroke-width:1;"
+                x1="125.0" x2="125.0" y1="59.0" y2="74.0"/>
+        </g>
+        <g id="line_4">
+            <line style="fill:none; stroke:black; stroke-width:1;"
+                x1="125.0" x2="118.0" y1="74.0" y2="85.0"/>
+        </g>
+        <g id="line_5">
+            <line style="fill:none; stroke:black; stroke-width:1;"
+                x1="125.0" x2="133.0" y1="74.0" y2="85.0"/>
+        </g>
+        <g id="ellipse_1">
+            <ellipse cx="125.0" cy="55.0" rx="4.0" ry="4.0" style="fill:none; stroke:black; stroke-width:1;"/>
+        </g>
+        <g id="text_1">
+            <text style="font-size:11px" x="109" y="97">Bruker</text>
+        </g>
+    </g>
+    <g id="Usecase_1">
+        <g id="ellipse_2">
+            <ellipse cx="237.5" cy="75.5" rx="34.5" ry="18.5" style="fill:none; stroke:black; stroke-width:1;"/>
+        </g>
+        <g id="text_2">
+            <text style="font-size:11px" x="210" y="78">Brukstilfelle</text>
+        </g>
+    </g>
+    <g id="Connection_1">
+        <g id="line_6">
+            <line style="fill:none; stroke:black; stroke-width:1;"
+                x1="140.0" x2="203.0" y1="75.0" y2="65.0"/>
+        </g>
+    </g>
+</svg>
